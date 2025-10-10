@@ -331,3 +331,35 @@ body.dark-mode .btn-primary:hover {
     height: 120px;
   }
 }
+
+/* Buttons */
+.btn-primary {
+  display: inline-block;
+  background: linear-gradient(135deg, #007bff, #0056d2);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  text-align: center;
+  margin-top: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #0056d2, #003d99);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark mode button adjustment */
+body.dark-mode .btn-primary {
+  background: linear-gradient(135deg, #00b3ff, #007bff);
+  color: #fff;
+}
+
+body.dark-mode .btn-primary:hover {
+  background: linear-gradient(135deg, #0091e6, #0066cc);
+}
