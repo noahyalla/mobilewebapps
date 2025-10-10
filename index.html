@@ -2,75 +2,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Noah Yalla - Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-        <div class="hero">
-            <h1>Your Name</h1>
-            <p>Mobile and Web Developer</p>
-        </div>
-    </header>
+  <header class="header">
+    <nav class="navbar">
+      <div class="logo">Noah Yalla</div>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
 
-    <section id="about">
-        <div class="container">
-            <h2>About Me</h2>
-            <p>I'm a passionate mobile and web developer with experience in building responsive applications using technologies like React, Flutter, Node.js, and more. I focus on creating user-friendly experiences that solve real-world problems. Feel free to explore my projects below.</p>
+    <div class="hero">
+      <div class="hero-content">
+        <div class="profile-image">
+          <img src="assets/images/profile.jpg" alt="Profile Image" />
         </div>
-    </section>
+        <h1>Hi, I'm <span>Noah</span></h1>
+        <p>Mobile & Web Developer | API Integrator | Innovator</p>
+        <a href="#projects" class="btn-primary">View My Work</a>
+      </div>
+    </div>
+  </header>
 
-    <section id="projects">
-        <div class="container">
-            <h2>Projects</h2>
-            <div class="project-grid">
-                <div class="project-card">
-                    <img src="assets/images/project1.jpg" alt="Project 1 Screenshot">
-                    <h3>Project 1: Mobile App</h3>
-                    <p>A cross-platform mobile app built with Flutter for task management. Features include real-time sync and notifications.</p>
-                    <a href="https://github.com/your-username/project1" class="btn">View on GitHub</a>
-                </div>
-                <div class="project-card">
-                    <img src="assets/images/project2.jpg" alt="Project 2 Screenshot">
-                    <h3>Project 2: Web Application</h3>
-                    <p>A full-stack web app using React and Node.js for e-commerce. Includes user authentication and payment integration.</p>
-                    <a href="https://github.com/your-username/project2" class="btn">View on GitHub</a>
-                </div>
-                <div class="project-card">
-                    <img src="assets/images/project3.jpg" alt="Project 3 Screenshot">
-                    <h3>Project 3: Hybrid Project</h3>
-                    <p>A responsive web and mobile hybrid solution with progressive web app features.</p>
-                    <a href="https://github.com/your-username/project3" class="btn">View on GitHub</a>
-                </div>
-                <!-- Add more project cards here as needed -->
-            </div>
+  <section id="about">
+    <div class="container">
+      <h2>About Me</h2>
+      <p>
+        I’m a passionate developer focused on building impactful digital products — from modern web platforms to robust mobile apps.
+        With hands-on experience in <strong>React, Flutter, Node.js, and Strapi</strong>, I love creating efficient, API-driven solutions that help people and businesses thrive.
+      </p>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <h2>Projects</h2>
+      <div class="project-grid">
+        <div class="project-card">
+          <img src="assets/images/project1.jpg" alt="Project 1 Screenshot" />
+          <div class="card-content">
+            <h3>TaskMate Mobile App</h3>
+            <p>Cross-platform task management app built with Flutter, featuring real-time sync and notifications.</p>
+            <a href="https://github.com/your-username/project1" class="btn">View on GitHub</a>
+          </div>
         </div>
-    </section>
 
-    <section id="contact">
-        <div class="container">
-            <h2>Contact</h2>
-            <p>Feel free to reach out for collaborations or opportunities:</p>
-            <ul class="contact-list">
-                <li>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></li>
-                <li>LinkedIn: <a href="https://linkedin.com/in/your-username">linkedin.com/in/your-username</a></li>
-                <li>GitHub: <a href="https://github.com/your-username">github.com/your-username</a></li>
-            </ul>
+        <div class="project-card">
+          <img src="assets/images/project2.jpg" alt="Project 2 Screenshot" />
+          <div class="card-content">
+            <h3>ShopNow Web App</h3>
+            <p>React & Node.js e-commerce platform with authentication and secure payment integration.</p>
+            <a href="https://github.com/your-username/project2" class="btn">View on GitHub</a>
+          </div>
         </div>
-    </section>
 
-    <footer>
-        <p>&copy; 2025 Your Name. All rights reserved.</p>
-    </footer>
+        <div class="project-card">
+          <img src="assets/images/project3.jpg" alt="Project 3 Screenshot" />
+          <div class="card-content">
+            <h3>Hybrid PWA</h3>
+            <p>Responsive hybrid app built as a progressive web app (PWA) for mobile and desktop users alike.</p>
+            <a href="https://github.com/your-username/project3" class="btn">View on GitHub</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <h2>Contact</h2>
+      <p>Interested in collaborating or have a project in mind?</p>
+      <ul class="contact-list">
+        <li><strong>Email:</strong> <a href="mailto:noeh@example.com">noeh@example.com</a></li>
+        <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/your-username">linkedin.com/in/your-username</a></li>
+        <li><strong>GitHub:</strong> <a href="https://github.com/your-username">github.com/your-username</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Noah Yalla. Built with ❤️ and creativity.</p>
+  </footer>
 </body>
 </html>
