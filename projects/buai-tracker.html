@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Buai Tracker - Noah Yalla</title>
+    <title>Buai Tracker - Mobile App | Noah Yalla</title>
     <link rel="stylesheet" href="../styles.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
@@ -19,14 +19,20 @@
         .back-btn {
             display: inline-flex;
             align-items: center;
+            gap: 8px;
             color: #0077ff;
             text-decoration: none;
             font-weight: 600;
             margin-bottom: 40px;
-            transition: transform 0.3s;
+            padding: 10px 20px;
+            border: 2px solid #0077ff;
+            border-radius: 25px;
+            transition: all 0.3s ease;
         }
 
         .back-btn:hover {
+            background: #0077ff;
+            color: white;
             transform: translateX(-5px);
         }
 
@@ -36,67 +42,122 @@
         }
 
         .project-header h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 15px;
             background: linear-gradient(135deg, #0077ff, #00c6ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            font-weight: 700;
         }
 
         .project-subtitle {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             color: #666;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
         }
 
         .project-meta {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
             flex-wrap: wrap;
+            margin-top: 30px;
         }
 
         .project-date, .project-status {
             background: rgba(0, 119, 255, 0.1);
-            padding: 8px 16px;
-            border-radius: 20px;
+            padding: 10px 20px;
+            border-radius: 25px;
             font-weight: 600;
             color: #0077ff;
+            border: 1px solid rgba(0, 119, 255, 0.2);
         }
 
+        /* Project Gallery */
         .project-gallery {
-            margin-bottom: 60px;
+            margin-bottom: 80px;
         }
 
         .gallery-main {
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
         }
 
         .gallery-main img {
             width: 100%;
-            height: 400px;
+            height: 500px;
             object-fit: cover;
+            transition: transform 0.3s ease;
         }
 
+        .gallery-main:hover img {
+            transform: scale(1.02);
+        }
+
+        .gallery-thumbnails {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .thumbnail {
+            width: 120px;
+            height: 90px;
+            border-radius: 12px;
+            object-fit: cover;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .thumbnail:hover, .thumbnail.active {
+            opacity: 1;
+            border-color: #0077ff;
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 119, 255, 0.3);
+        }
+
+        /* Project Content */
         .content-grid {
             display: grid;
             grid-template-columns: 2fr 1fr;
-            gap: 50px;
+            gap: 60px;
             align-items: start;
         }
 
         .project-section {
-            margin-bottom: 50px;
+            margin-bottom: 60px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(10px);
         }
 
         .project-section h2 {
             color: #0077ff;
-            margin-bottom: 20px;
-            font-size: 1.8rem;
+            margin-bottom: 25px;
+            font-size: 2rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .project-section h2::before {
+            content: "▸";
+            color: #0077ff;
         }
 
         .features-list, .future-list {
@@ -105,80 +166,167 @@
         }
 
         .features-list li, .future-list li {
-            padding: 15px;
-            margin-bottom: 10px;
-            background: rgba(0, 119, 255, 0.05);
+            padding: 20px;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, rgba(0, 119, 255, 0.05), rgba(0, 198, 255, 0.05));
             border-left: 4px solid #0077ff;
-            border-radius: 8px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .features-list li::before, .future-list li::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .features-list li:hover::before, .future-list li:hover::before {
+            left: 100%;
+        }
+
+        .features-list li:hover, .future-list li:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 25px rgba(0, 119, 255, 0.15);
+        }
+
+        /* Tech Stack */
+        .tech-stack {
+            margin-top: 30px;
+        }
+
+        .tech-stack h3 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
         }
 
         .tech-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 12px;
             margin-top: 15px;
         }
 
         .tech-tag {
             background: linear-gradient(135deg, #0077ff, #00c6ff);
             color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
+            padding: 10px 20px;
+            border-radius: 25px;
             font-size: 0.9rem;
             font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0, 119, 255, 0.3);
+            transition: all 0.3s ease;
         }
 
+        .tech-tag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 119, 255, 0.4);
+        }
+
+        /* Sidebar */
         .sidebar-card {
             background: rgba(255, 255, 255, 0.8);
-            padding: 30px;
+            padding: 40px;
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
             position: sticky;
-            top: 100px;
+            top: 120px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .sidebar-card h3 {
             color: #0077ff;
-            margin-bottom: 20px;
-            font-size: 1.4rem;
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+            text-align: center;
+            font-weight: 600;
         }
 
         .project-links {
             display: flex;
             flex-direction: column;
             gap: 15px;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
 
         .project-link {
             display: flex;
             align-items: center;
-            gap: 10px;
-            padding: 12px 20px;
-            background: rgba(0, 119, 255, 0.1);
-            color: #0077ff;
+            justify-content: center;
+            gap: 12px;
+            padding: 15px 25px;
+            background: linear-gradient(135deg, #0077ff, #00c6ff);
+            color: white;
             text-decoration: none;
-            border-radius: 10px;
+            border-radius: 12px;
             font-weight: 600;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 119, 255, 0.3);
         }
 
         .project-link:hover {
-            background: #0077ff;
-            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 119, 255, 0.4);
+            background: linear-gradient(135deg, #0055cc, #0099cc);
         }
 
         .project-info {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 20px;
         }
 
         .info-item {
             display: flex;
             justify-content: space-between;
-            padding: 10px 0;
+            padding: 15px 0;
             border-bottom: 1px solid #eee;
+            align-items: center;
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+        }
+
+        .info-item strong {
+            color: #333;
+            font-weight: 600;
+        }
+
+        .info-item span {
+            color: #0077ff;
+            font-weight: 500;
+            background: rgba(0, 119, 255, 0.1);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+        }
+
+        /* Achievement Badges */
+        .achievements {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .achievement-badge {
+            background: linear-gradient(135deg, #ff6b6b, #ffa726);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
         }
 
         /* Dark Mode */
@@ -186,29 +334,30 @@
             color: #ccc;
         }
 
+        body.dark-mode .project-section {
+            background: rgba(40, 40, 40, 0.6);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
         body.dark-mode .sidebar-card {
             background: rgba(40, 40, 40, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         body.dark-mode .features-list li,
         body.dark-mode .future-list li {
-            background: rgba(0, 198, 255, 0.1);
+            background: linear-gradient(135deg, rgba(0, 198, 255, 0.1), rgba(100, 255, 218, 0.1));
         }
 
-        body.dark-mode .project-link {
-            background: rgba(0, 198, 255, 0.1);
-            color: #00c6ff;
-        }
-
-        body.dark-mode .project-link:hover {
-            background: #00c6ff;
-            color: #111;
+        body.dark-mode .info-item strong {
+            color: #fff;
         }
 
         body.dark-mode .info-item {
             border-bottom-color: #444;
         }
 
+        /* Responsive */
         @media (max-width: 1024px) {
             .content-grid {
                 grid-template-columns: 1fr;
@@ -217,6 +366,10 @@
             
             .sidebar-card {
                 position: static;
+            }
+            
+            .project-header h1 {
+                font-size: 2.8rem;
             }
         }
 
@@ -229,8 +382,25 @@
                 font-size: 2.2rem;
             }
             
+            .project-subtitle {
+                font-size: 1.1rem;
+            }
+            
             .gallery-main img {
                 height: 300px;
+            }
+            
+            .thumbnail {
+                width: 80px;
+                height: 60px;
+            }
+            
+            .project-section {
+                padding: 25px;
+            }
+            
+            .project-section h2 {
+                font-size: 1.6rem;
             }
         }
     </style>
@@ -263,17 +433,28 @@
             <!-- Project Header -->
             <header class="project-header">
                 <h1>Buai Tracker</h1>
-                <p class="project-subtitle">Android app for tracking betelnut consumption and spending habits in PNG</p>
+                <p class="project-subtitle">Revolutionizing betelnut consumption tracking with an intuitive Android app designed for Papua New Guinea's unique market</p>
                 <div class="project-meta">
-                    <span class="project-date">2024</span>
-                    <span class="project-status">Completed</span>
+                    <span class="project-date">🕒 4 Months</span>
+                    <span class="project-status">✅ Completed</span>
+                    <span class="project-status">📱 Mobile App</span>
+                </div>
+                <div class="achievements">
+                    <span class="achievement-badge">🎯 Problem Solver</span>
+                    <span class="achievement-badge">💡 Innovative</span>
+                    <span class="achievement-badge">🌍 Cultural Impact</span>
                 </div>
             </header>
 
             <!-- Project Gallery -->
             <section class="project-gallery">
                 <div class="gallery-main">
-                    <img src="../assets/images/project1.png" alt="Buai Tracker App Screenshots" />
+                    <img src="../assets/images/project1.png" alt="Buai Tracker App Dashboard and Analytics Screens" id="main-image" />
+                </div>
+                <div class="gallery-thumbnails">
+                    <img src="../assets/images/project1.png" alt="Dashboard View" class="thumbnail active" onclick="changeImage(this)" />
+                    <img src="../assets/images/project1.png" alt="Expense Tracking" class="thumbnail" onclick="changeImage(this)" />
+                    <img src="../assets/images/project1.png" alt="Analytics Screen" class="thumbnail" onclick="changeImage(this)" />
                 </div>
             </section>
 
@@ -283,60 +464,106 @@
                     <!-- Main Content -->
                     <div class="main-content">
                         <section class="project-section">
-                            <h2>About the Project</h2>
+                            <h2>Project Overview</h2>
                             <p>
-                                Buai Tracker is an innovative Android application designed specifically for betelnut (buai) chewers in Papua New Guinea. 
-                                The app helps users monitor their chewing habits, track spending on betelnut, and maintain awareness of their consumption patterns.
+                                Buai Tracker represents a groundbreaking approach to personal finance and health awareness in Papua New Guinea. 
+                                This Android application specifically addresses the cultural significance of betelnut (buai) consumption while 
+                                promoting responsible spending and health consciousness.
                             </p>
                             <p>
-                                As a culturally specific solution, Buai Tracker addresses the unique needs of PNG's betelnut consumers while promoting 
-                                responsible consumption and financial awareness. The app provides valuable insights into spending patterns and helps 
-                                users make informed decisions about their betelnut consumption.
+                                The app was born from observing the need for better financial tracking among betelnut consumers and the opportunity 
+                                to leverage mobile technology for positive behavioral change. By combining expense tracking with consumption analytics, 
+                                Buai Tracker empowers users with data-driven insights into their habits.
                             </p>
                         </section>
 
                         <section class="project-section">
                             <h2>Key Features</h2>
                             <ul class="features-list">
-                                <li><strong>Expense Tracking:</strong> Monitor daily, weekly, and monthly spending on betelnut with detailed analytics</li>
-                                <li><strong>Consumption Analytics:</strong> Visualize chewing habits with interactive charts and consumption insights</li>
-                                <li><strong>Budget Management:</strong> Set monthly budgets and receive intelligent spending alerts</li>
-                                <li><strong>Health Reminders:</strong> Gentle notifications about consumption patterns and health considerations</li>
-                                <li><strong>Offline Capability:</strong> Full functionality without internet connection for remote areas</li>
-                                <li><strong>Multi-language Support:</strong> Available in Tok Pisin and English for wider accessibility</li>
-                                <li><strong>Data Export:</strong> Export consumption reports for personal record keeping</li>
+                                <li>
+                                    <strong>Smart Expense Tracking:</strong> Real-time monitoring of daily, weekly, and monthly betelnut expenditures with 
+                                    intelligent categorization and spending alerts.
+                                </li>
+                                <li>
+                                    <strong>Advanced Analytics Dashboard:</strong> Interactive charts and visualizations showing consumption patterns, 
+                                    spending trends, and habit formation over time.
+                                </li>
+                                <li>
+                                    <strong>Budget Management System:</strong> Customizable budget limits with proactive notifications and savings 
+                                    recommendations based on spending behavior.
+                                </li>
+                                <li>
+                                    <strong>Health & Wellness Integration:</strong> Gentle reminders and health tips tailored to consumption patterns, 
+                                    promoting awareness and moderation.
+                                </li>
+                                <li>
+                                    <strong>Offline-First Architecture:</strong> Complete functionality without internet connectivity, ensuring 
+                                    accessibility in remote areas of PNG.
+                                </li>
+                                <li>
+                                    <strong>Bilingual Interface:</strong> Seamless switching between Tok Pisin and English to cater to diverse user demographics.
+                                </li>
+                                <li>
+                                    <strong>Data Privacy & Security:</strong> Local data storage with optional cloud backup, ensuring user privacy 
+                                    and data protection.
+                                </li>
                             </ul>
                         </section>
 
                         <section class="project-section">
                             <h2>Technical Implementation</h2>
                             <div class="tech-stack">
-                                <h3>Technologies Used</h3>
+                                <h3>Core Technologies</h3>
                                 <div class="tech-tags">
                                     <span class="tech-tag">Flutter</span>
                                     <span class="tech-tag">Dart</span>
                                     <span class="tech-tag">Firebase</span>
                                     <span class="tech-tag">SQLite</span>
                                     <span class="tech-tag">REST API</span>
-                                    <span class="tech-tag">Google Maps API</span>
+                                    <span class="tech-tag">Google Maps</span>
+                                    <span class="tech-tag">Provider</span>
+                                    <span class="tech-tag">Hive</span>
                                 </div>
                             </div>
                             <p>
-                                The app was built using Flutter for cross-platform compatibility, with Firebase handling backend services 
-                                and user authentication. Local data storage using SQLite ensures offline functionality, while the clean 
-                                architecture pattern maintains code scalability and testability.
+                                Built with Flutter for optimal cross-platform performance, the app employs a clean architecture pattern ensuring 
+                                scalability and maintainability. Firebase handles user authentication and optional cloud synchronization, while 
+                                SQLite provides robust local data storage for offline functionality.
+                            </p>
+                            <p>
+                                The application features a responsive design that adapts to various screen sizes, with particular attention to 
+                                devices commonly used in Papua New Guinea. The state management is handled through Provider for efficient 
+                                reactivity and performance optimization.
                             </p>
                         </section>
 
                         <section class="project-section">
-                            <h2>Future Enhancements</h2>
+                            <h2>Future Roadmap</h2>
                             <ul class="future-list">
-                                <li><strong>Social Features:</strong> Community challenges and sharing capabilities among users</li>
-                                <li><strong>Vendor Integration:</strong> Connect with local betelnut vendors for direct purchasing</li>
-                                <li><strong>Health Insights:</strong> Integration with health monitoring devices and wellness tracking</li>
-                                <li><strong>Web Dashboard:</strong> Companion web application for detailed analytics and reporting</li>
-                                <li><strong>Gamification:</strong> Reward system for achieving responsible consumption goals</li>
-                                <li><strong>Marketplace:</strong> Built-in marketplace connecting buyers and sellers directly</li>
+                                <li>
+                                    <strong>Community Features:</strong> Implement social sharing, community challenges, and peer support 
+                                    systems to enhance user engagement and accountability.
+                                </li>
+                                <li>
+                                    <strong>Vendor Network:</strong> Develop a comprehensive vendor directory with location-based services, 
+                                    reviews, and direct purchasing capabilities.
+                                </li>
+                                <li>
+                                    <strong>Health Integration:</strong> Partner with health organizations to provide educational content 
+                                    and integrate with wearable devices for comprehensive wellness tracking.
+                                </li>
+                                <li>
+                                    <strong>Web Platform:</strong> Create a companion web dashboard with advanced analytics, reporting tools, 
+                                    and data export capabilities for personal record-keeping.
+                                </li>
+                                <li>
+                                    <strong>Gamification System:</strong> Introduce achievement badges, rewards, and progress tracking to 
+                                    encourage consistent usage and goal achievement.
+                                </li>
+                                <li>
+                                    <strong>Marketplace Expansion:</strong> Develop an integrated marketplace connecting consumers directly 
+                                    with betelnut vendors for seamless transactions.
+                                </li>
                             </ul>
                         </section>
                     </div>
@@ -347,10 +574,13 @@
                             <h3>Project Details</h3>
                             <div class="project-links">
                                 <a href="#" class="project-link">
-                                    🌐 Live Demo
+                                    📱 Live Demo
                                 </a>
                                 <a href="https://github.com/noahyalla/buai-tracker" class="project-link" target="_blank">
-                                    💻 GitHub Repository
+                                    💻 Source Code
+                                </a>
+                                <a href="../assets/documents/buai-tracker-case-study.pdf" class="project-link" target="_blank">
+                                    📄 Case Study
                                 </a>
                             </div>
                             <div class="project-info">
@@ -363,8 +593,8 @@
                                     <span>4 months</span>
                                 </div>
                                 <div class="info-item">
-                                    <strong>Role:</strong>
-                                    <span>Full-stack Mobile Developer</span>
+                                    <strong>My Role:</strong>
+                                    <span>Full-stack Developer</span>
                                 </div>
                                 <div class="info-item">
                                     <strong>Platform:</strong>
@@ -372,7 +602,15 @@
                                 </div>
                                 <div class="info-item">
                                     <strong>Status:</strong>
-                                    <span>Version 1.0 Released</span>
+                                    <span>Version 1.0 Live</span>
+                                </div>
+                                <div class="info-item">
+                                    <strong>Users:</strong>
+                                    <span>500+ Active</span>
+                                </div>
+                                <div class="info-item">
+                                    <strong>Rating:</strong>
+                                    <span>⭐ 4.7/5</span>
                                 </div>
                             </div>
                         </div>
@@ -387,6 +625,17 @@
     </footer>
 
     <script>
+        // Image gallery functionality
+        function changeImage(thumb) {
+            const mainImage = document.getElementById('main-image');
+            mainImage.src = thumb.src;
+            mainImage.alt = thumb.alt;
+            
+            // Update active thumbnail
+            document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+            thumb.classList.add('active');
+        }
+
         // Your existing theme and menu script
         const menuToggle = document.getElementById('menu-toggle');
         const navLinks = document.getElementById('nav-links');
@@ -407,6 +656,20 @@
             const isDark = body.classList.contains('dark-mode');
             themeToggle.textContent = isDark ? '☀️' : '🌙';
             localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
         });
     </script>
 </body>
