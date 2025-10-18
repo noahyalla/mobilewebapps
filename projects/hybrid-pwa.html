@@ -1,0 +1,48 @@
+<!-- Use the template above but with this content in the main section -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Set project-specific content
+    document.getElementById('project-title').textContent = 'Buai Tracker';
+    document.getElementById('project-description').innerHTML = `
+        <p>Buai Tracker is an innovative Android application designed specifically for betelnut (buai) chewers in Papua New Guinea. 
+        The app helps users monitor their chewing habits, track spending on betelnut, and maintain awareness of their consumption patterns.</p>
+        
+        <p>As a culturally specific solution, Buai Tracker addresses the unique needs of PNG's betelnut consumers while promoting 
+        responsible consumption and financial awareness.</p>
+    `;
+    
+    document.getElementById('features-list').innerHTML = `
+        <li><strong>Expense Tracking:</strong> Monitor daily, weekly, and monthly spending on betelnut</li>
+        <li><strong>Consumption Analytics:</strong> Visualize chewing habits with detailed charts and insights</li>
+        <li><strong>Budget Management:</strong> Set monthly budgets and receive spending alerts</li>
+        <li><strong>Health Reminders:</strong> Gentle notifications about consumption patterns</li>
+        <li><strong>Offline Capability:</strong> Works without internet connection in remote areas</li>
+        <li><strong>Multi-language Support:</strong> Available in Tok Pisin and English</li>
+    `;
+    
+    document.getElementById('tech-tags').innerHTML = `
+        <span class="tech-tag">Flutter</span>
+        <span class="tech-tag">Dart</span>
+        <span class="tech-tag">Firebase</span>
+        <span class="tech-tag">SQLite</span>
+        <span class="tech-tag">REST API</span>
+    `;
+    
+    document.getElementById('future-list').innerHTML = `
+        <li><strong>Social Features:</strong> Community challenges and sharing capabilities</li>
+        <li><strong>Vendor Integration:</strong> Connect with local betelnut vendors</li>
+        <li><strong>Health Insights:</strong> Integration with health monitoring devices</li>
+        <li><strong>Web Dashboard:</strong> Companion web application for detailed analytics</li>
+        <li><strong>Gamification:</strong> Reward system for achieving consumption goals</li>
+    `;
+    
+    // Update project details
+    document.getElementById('project-category').textContent = 'Mobile Application';
+    document.getElementById('project-timeline').textContent = '4 months';
+    document.getElementById('project-role').textContent = 'Full-stack Mobile Developer';
+    
+    // Update links
+    document.getElementById('live-demo').href = '#';
+    document.getElementById('github-repo').href = 'https://github.com/noahyalla/buai-tracker';
+});
+</script>

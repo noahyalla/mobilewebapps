@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Name - Noah Yalla</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../project-styles.css" />
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+          <div class="logo">
+            <a href="../index.html" style="text-decoration: none; color: inherit;">Gigs</a>
+          </div>
+          <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">☰</button>
+          <ul class="nav-links" id="nav-links">
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="../index.html#projects">Projects</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+            <li>
+              <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
+            </li>
+          </ul>
+        </nav>
+    </header>
+
+    <main class="project-detail">
+        <div class="container">
+            <!-- Back Button -->
+            <a href="../index.html#projects" class="back-btn">
+                ← Back to Projects
+            </a>
+
+            <!-- Project Header -->
+            <header class="project-header">
+                <h1 id="project-title">Project Title</h1>
+                <p class="project-subtitle">Brief project description</p>
+                <div class="project-meta">
+                    <span class="project-date">2024</span>
+                    <span class="project-status">Completed</span>
+                </div>
+            </header>
+
+            <!-- Project Gallery -->
+            <section class="project-gallery">
+                <div class="gallery-main">
+                    <img src="../assets/images/project-hero.jpg" alt="Project main screenshot" id="main-image" />
+                </div>
+                <div class="gallery-thumbnails">
+                    <img src="../assets/images/thumb1.jpg" alt="Thumbnail 1" class="thumbnail active" />
+                    <img src="../assets/images/thumb2.jpg" alt="Thumbnail 2" class="thumbnail" />
+                    <img src="../assets/images/thumb3.jpg" alt="Thumbnail 3" class="thumbnail" />
+                </div>
+            </section>
+
+            <!-- Project Details -->
+            <section class="project-content">
+                <div class="content-grid">
+                    <!-- Main Content -->
+                    <div class="main-content">
+                        <section class="project-section">
+                            <h2>About the Project</h2>
+                            <p id="project-description">
+                                Detailed description of the project...
+                            </p>
+                        </section>
+
+                        <section class="project-section">
+                            <h2>Key Features</h2>
+                            <ul class="features-list" id="features-list">
+                                <li>Feature one description</li>
+                                <li>Feature two description</li>
+                                <li>Feature three description</li>
+                            </ul>
+                        </section>
+
+                        <section class="project-section">
+                            <h2>Technical Implementation</h2>
+                            <div class="tech-stack">
+                                <h3>Technologies Used</h3>
+                                <div class="tech-tags" id="tech-tags">
+                                    <span class="tech-tag">Flutter</span>
+                                    <span class="tech-tag">Firebase</span>
+                                    <span class="tech-tag">Node.js</span>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="project-section">
+                            <h2>Future Enhancements</h2>
+                            <ul class="future-list" id="future-list">
+                                <li>Potential future feature one</li>
+                                <li>Potential future feature two</li>
+                                <li>Potential future feature three</li>
+                            </ul>
+                        </section>
+                    </div>
+
+                    <!-- Sidebar -->
+                    <aside class="project-sidebar">
+                        <div class="sidebar-card">
+                            <h3>Project Details</h3>
+                            <div class="project-links">
+                                <a href="#" class="project-link" id="live-demo">
+                                    🌐 Live Demo
+                                </a>
+                                <a href="#" class="project-link" id="github-repo">
+                                    💻 GitHub Repository
+                                </a>
+                            </div>
+                            <div class="project-info">
+                                <div class="info-item">
+                                    <strong>Category:</strong>
+                                    <span id="project-category">Mobile App</span>
+                                </div>
+                                <div class="info-item">
+                                    <strong>Timeline:</strong>
+                                    <span id="project-timeline">3 months</span>
+                                </div>
+                                <div class="info-item">
+                                    <strong>Role:</strong>
+                                    <span id="project-role">Full-stack Developer</span>
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Noah Yalla. Built with ❤️ and creativity.</p>
+    </footer>
+
+    <script src="../project-script.js"></script>
+    <!-- Include your existing script for theme and menu -->
+    <script>
+        // Your existing theme and menu script here
+        const menuToggle = document.getElementById('menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-mode');
+            themeToggle.textContent = '☀️';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const isDark = body.classList.contains('dark-mode');
+            themeToggle.textContent = isDark ? '☀️' : '🌙';
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+    </script>
+</body>
+</html>
