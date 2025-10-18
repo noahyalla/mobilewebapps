@@ -89,6 +89,12 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             margin-bottom: 30px;
             border: 1px solid rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-main:hover {
+            transform: translateY(-5px);
         }
 
         .gallery-main img {
@@ -104,28 +110,165 @@
 
         .gallery-thumbnails {
             display: flex;
-            gap: 15px;
+            gap: 10px;
             justify-content: center;
             flex-wrap: wrap;
+            max-width: 100%;
+            overflow-x: auto;
+            padding: 10px 0;
         }
 
         .thumbnail {
-            width: 120px;
-            height: 90px;
-            border-radius: 12px;
+            width: 80px;
+            height: 60px;
+            border-radius: 8px;
             object-fit: cover;
             cursor: pointer;
             opacity: 0.7;
             transition: all 0.3s ease;
             border: 2px solid transparent;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            flex-shrink: 0;
         }
 
         .thumbnail:hover, .thumbnail.active {
             opacity: 1;
             border-color: #0077ff;
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(0, 119, 255, 0.3);
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(0, 119, 255, 0.3);
+        }
+
+        /* Image Carousel Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            position: relative;
+            margin: auto;
+            padding: 20px;
+            width: 95%;
+            height: 95vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-slide {
+            display: none;
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .carousel-slide.active {
+            display: block;
+        }
+
+        .carousel-image {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .image-caption {
+            color: white;
+            margin-top: 20px;
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        /* Carousel Controls */
+        .carousel-controls {
+            position: absolute;
+            width: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            pointer-events: none;
+        }
+
+        .carousel-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            font-size: 2rem;
+            padding: 15px 20px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            pointer-events: all;
+            backdrop-filter: blur(10px);
+        }
+
+        .carousel-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 3rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1001;
+            background: rgba(0, 0, 0, 0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        }
+
+        .close-modal:hover {
+            color: #ff6b6b;
+            transform: rotate(90deg);
+        }
+
+        .carousel-indicators {
+            position: absolute;
+            bottom: 30px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            padding: 15px;
+            flex-wrap: wrap;
+        }
+
+        .indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .indicator.active {
+            background: #0077ff;
+            transform: scale(1.3);
         }
 
         /* Project Content */
@@ -329,6 +472,12 @@
             box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
         }
 
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
         /* Dark Mode */
         body.dark-mode .project-subtitle {
             color: #ccc;
@@ -391,8 +540,8 @@
             }
             
             .thumbnail {
-                width: 80px;
-                height: 60px;
+                width: 60px;
+                height: 45px;
             }
             
             .project-section {
@@ -401,6 +550,36 @@
             
             .project-section h2 {
                 font-size: 1.6rem;
+            }
+
+            .carousel-btn {
+                font-size: 1.5rem;
+                padding: 10px 15px;
+            }
+
+            .close-modal {
+                font-size: 2rem;
+                top: 10px;
+                right: 15px;
+            }
+
+            .carousel-indicators {
+                bottom: 15px;
+            }
+
+            .image-caption {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-thumbnails {
+                justify-content: flex-start;
+            }
+            
+            .thumbnail {
+                width: 50px;
+                height: 38px;
             }
         }
     </style>
@@ -448,23 +627,23 @@
 
             <!-- Project Gallery -->
             <section class="project-gallery">
-                <div class="gallery-main">
-                    <img src="../assets/images/project1.png" alt="Buai Tracker App Dashboard and Analytics Screens" id="main-image" />
+                <div class="gallery-main" onclick="openModal(currentSlideIndex)">
+                    <img src="../assets/images/project1/1.png" alt="Buai Tracker App Screenshot 1" id="main-image" />
                 </div>
                 <div class="gallery-thumbnails">
-                    <img src="../assets/images/project1/1.png" alt="1" class="thumbnail active" onclick="changeImage(this)" />
-                    <img src="../assets/images/project1/2.png" alt="2" class="thumbnail" onclick="changeImage(this)" />
-                    <img src="../assets/images/project1/3.png" alt="3" class="thumbnail" onclick="changeImage(this)" />
-                    <img src="../assets/images/project1/4.png" alt="4" class="thumbnail" onclick="changeImage(this)" />
-                    <img src="../assets/images/project1/5.png" alt="5" class="thumbnail" onclick="changeImage(this)" />
-                    <img src="../assets/images/project1/6.png" alt="6" class="thumbnail" onclick="changeImage(this)" />
-                    <img src="../assets/images/project1/7.png" alt="7" class="thumbnail" onclick="changeImage(this)" />
-                    <img src="../assets/images/project1/8.png" alt="8" class="thumbnail" onclick="changeImage(this)" />
-                    <img src="../assets/images/project1/9.png" alt="9" class="thumbnail" onclick="changeImage(this)" />
-                    <img src="../assets/images/project1/10.png" alt="10" class="thumbnail" onclick="changeImage(this)" />
-                    <img src="../assets/images/project1/11.png" alt="11" class="thumbnail" onclick="changeImage(this)" />
-                    <img src="../assets/images/project1/12.png" alt="12" class="thumbnail" onclick="changeImage(this)" />
-                    <img src="../assets/images/project1/13.png" alt="13" class="thumbnail" onclick="changeImage(this)" />
+                    <img src="../assets/images/project1/1.png" alt="App Dashboard" class="thumbnail active" onclick="changeImage(this, 0)" />
+                    <img src="../assets/images/project1/2.png" alt="Expense Tracking" class="thumbnail" onclick="changeImage(this, 1)" />
+                    <img src="../assets/images/project1/3.png" alt="Analytics View" class="thumbnail" onclick="changeImage(this, 2)" />
+                    <img src="../assets/images/project1/4.png" alt="Budget Setup" class="thumbnail" onclick="changeImage(this, 3)" />
+                    <img src="../assets/images/project1/5.png" alt="Spending Report" class="thumbnail" onclick="changeImage(this, 4)" />
+                    <img src="../assets/images/project1/6.png" alt="Habit Tracking" class="thumbnail" onclick="changeImage(this, 5)" />
+                    <img src="../assets/images/project1/7.png" alt="Settings" class="thumbnail" onclick="changeImage(this, 6)" />
+                    <img src="../assets/images/project1/8.png" alt="Profile" class="thumbnail" onclick="changeImage(this, 7)" />
+                    <img src="../assets/images/project1/9.png" alt="Notifications" class="thumbnail" onclick="changeImage(this, 8)" />
+                    <img src="../assets/images/project1/10.png" alt="Statistics" class="thumbnail" onclick="changeImage(this, 9)" />
+                    <img src="../assets/images/project1/11.png" alt="Export Data" class="thumbnail" onclick="changeImage(this, 10)" />
+                    <img src="../assets/images/project1/12.png" alt="Help & Support" class="thumbnail" onclick="changeImage(this, 11)" />
+                    <img src="../assets/images/project1/13.png" alt="About App" class="thumbnail" onclick="changeImage(this, 12)" />
                 </div>
             </section>
 
@@ -495,20 +674,13 @@
                                     intelligent categorization and spending alerts.
                                 </li>
                                 <li>
-                                    <strong>Advanced Analytics Dashboard:</strong> Interactive charts and visualizations showing consumption patterns, 
+                                    <strong>Insights:</strong> Interactive charts and visualizations showing consumption patterns, 
                                     spending trends, and habit formation over time.
                                 </li>
-                                <!-- <li>
-                                    <strong>Health & Wellness Integration:</strong> Gentle reminders and health tips tailored to consumption patterns, 
-                                    promoting awareness and moderation.
-                                </li> -->
                                 <li>
                                     <strong>Offline-First Architecture:</strong> Complete functionality without internet connectivity, ensuring 
                                     accessibility in remote areas of PNG.
                                 </li>
-                                <!-- <li>
-                                    <strong>Bilingual Interface:</strong> Seamless switching between Tok Pisin and English to cater to diverse user demographics.
-                                </li> -->
                                 <li>
                                     <strong>Data Privacy & Security:</strong> Local data storage with optional cloud backup, ensuring user privacy 
                                     and data protection.
@@ -526,7 +698,6 @@
                                     <span class="tech-tag">Firebase</span>
                                     <span class="tech-tag">SQLite</span>
                                     <span class="tech-tag">REST API</span>
-                                    <!-- <span class="tech-tag">Google Maps</span> -->
                                     <span class="tech-tag">Provider</span>
                                     <span class="tech-tag">Hive</span>
                                 </div>
@@ -570,7 +741,7 @@
                                     <strong>Marketplace Expansion:</strong> Develop an integrated marketplace connecting consumers directly 
                                     with betelnut vendors for seamless transactions.
                                 </li>
-                                                                <li>
+                                <li>
                                     <strong>Budget Management System:</strong> Customizable budget limits with proactive notifications and savings 
                                     recommendations based on spending behavior.
                                 </li>
@@ -600,7 +771,7 @@
                                 </div>
                                 <div class="info-item">
                                     <strong>Timeline:</strong>
-                                    <span>4 months</span>
+                                    <span>2 months</span>
                                 </div>
                                 <div class="info-item">
                                     <strong>My Role:</strong>
@@ -614,14 +785,14 @@
                                     <strong>Status:</strong>
                                     <span>Version 1.0 Live</span>
                                 </div>
-                                <div class="info-item">
+                                <!-- <div class="info-item">
                                     <strong>Users:</strong>
                                     <span>500+ Active</span>
-                                </div>
-                                <div class="info-item">
+                                </div> -->
+                                <!-- <div class="info-item">
                                     <strong>Rating:</strong>
                                     <span>⭐ 4.7/5</span>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </aside>
@@ -630,13 +801,131 @@
         </div>
     </main>
 
+    <!-- Image Carousel Modal -->
+    <div id="imageModal" class="modal">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+            <div class="carousel-controls">
+                <button class="carousel-btn prev" onclick="changeSlide(-1)">❮</button>
+                <button class="carousel-btn next" onclick="changeSlide(1)">❯</button>
+            </div>
+            
+            <!-- Carousel Slides -->
+            <div class="carousel-slide active">
+                <img src="../assets/images/project1/1.png" alt="App Dashboard" class="carousel-image">
+                <div class="image-caption">Dashboard - Overview of spending and consumption analytics</div>
+            </div>
+            <div class="carousel-slide">
+                <img src="../assets/images/project1/2.png" alt="Expense Tracking" class="carousel-image">
+                <div class="image-caption">Expense Tracking - Detailed spending analysis and categorization</div>
+            </div>
+            <div class="carousel-slide">
+                <img src="../assets/images/project1/3.png" alt="Analytics View" class="carousel-image">
+                <div class="image-caption">Analytics - Consumption patterns and spending insights</div>
+            </div>
+            <div class="carousel-slide">
+                <img src="../assets/images/project1/4.png" alt="Budget Setup" class="carousel-image">
+                <div class="image-caption">Budget Management - Set and track spending limits</div>
+            </div>
+            <div class="carousel-slide">
+                <img src="../assets/images/project1/5.png" alt="Spending Report" class="carousel-image">
+                <div class="image-caption">Spending Reports - Comprehensive financial overview</div>
+            </div>
+            <div class="carousel-slide">
+                <img src="../assets/images/project1/6.png" alt="Habit Tracking" class="carousel-image">
+                <div class="image-caption">Habit Tracking - Monitor consumption patterns over time</div>
+            </div>
+            <div class="carousel-slide">
+                <img src="../assets/images/project1/7.png" alt="Settings" class="carousel-image">
+                <div class="image-caption">Settings - Customize app preferences and notifications</div>
+            </div>
+            <div class="carousel-slide">
+                <img src="../assets/images/project1/8.png" alt="Profile" class="carousel-image">
+                <div class="image-caption">User Profile - Personal information and account settings</div>
+            </div>
+            <div class="carousel-slide">
+                <img src="../assets/images/project1/9.png" alt="Notifications" class="carousel-image">
+                <div class="image-caption">Notifications - Alerts and reminders for better tracking</div>
+            </div>
+            <div class="carousel-slide">
+                <img src="../assets/images/project1/10.png" alt="Statistics" class="carousel-image">
+                <div class="image-caption">Statistics - Detailed charts and data visualization</div>
+            </div>
+            <div class="carousel-slide">
+                <img src="../assets/images/project1/11.png" alt="Export Data" class="carousel-image">
+                <div class="image-caption">Data Export - Backup and share your tracking data</div>
+            </div>
+            <div class="carousel-slide">
+                <img src="../assets/images/project1/12.png" alt="Help & Support" class="carousel-image">
+                <div class="image-caption">Help & Support - User guidance and assistance</div>
+            </div>
+            <div class="carousel-slide">
+                <img src="../assets/images/project1/13.png" alt="About App" class="carousel-image">
+                <div class="image-caption">About - App information and version details</div>
+            </div>
+
+            <div class="carousel-indicators">
+                <!-- Indicators will be generated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
     <footer>
         <p>&copy; 2025 Noah Yalla. Built with ❤️ and creativity.</p>
     </footer>
 
     <script>
-        // Image gallery functionality
-        function changeImage(thumb) {
+        // Carousel functionality
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const totalSlides = slides.length;
+
+        // Generate indicators
+        const indicatorsContainer = document.querySelector('.carousel-indicators');
+        for (let i = 0; i < totalSlides; i++) {
+            const indicator = document.createElement('span');
+            indicator.className = 'indicator';
+            if (i === 0) indicator.classList.add('active');
+            indicator.onclick = () => currentSlide(i);
+            indicatorsContainer.appendChild(indicator);
+        }
+        const indicators = document.querySelectorAll('.indicator');
+
+        function openModal(slideIndex) {
+            currentSlideIndex = slideIndex;
+            showSlide(currentSlideIndex);
+            document.getElementById('imageModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function changeSlide(n) {
+            showSlide(currentSlideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlide(currentSlideIndex = n);
+        }
+
+        function showSlide(n) {
+            if (n >= totalSlides) { currentSlideIndex = 0; }
+            if (n < 0) { currentSlideIndex = totalSlides - 1; }
+            
+            // Hide all slides
+            slides.forEach(slide => slide.classList.remove('active'));
+            indicators.forEach(indicator => indicator.classList.remove('active'));
+            
+            // Show current slide
+            slides[currentSlideIndex].classList.add('active');
+            indicators[currentSlideIndex].classList.add('active');
+        }
+
+        // Image gallery functionality for thumbnails
+        function changeImage(thumb, index) {
             const mainImage = document.getElementById('main-image');
             mainImage.src = thumb.src;
             mainImage.alt = thumb.alt;
@@ -644,7 +933,30 @@
             // Update active thumbnail
             document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
             thumb.classList.add('active');
+            
+            // Update current slide index
+            currentSlideIndex = index;
         }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (document.getElementById('imageModal').style.display === 'block') {
+                if (e.key === 'ArrowLeft') {
+                    changeSlide(-1);
+                } else if (e.key === 'ArrowRight') {
+                    changeSlide(1);
+                } else if (e.key === 'Escape') {
+                    closeModal();
+                }
+            }
+        });
+
+        // Close modal when clicking outside the image
+        document.getElementById('imageModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
 
         // Your existing theme and menu script
         const menuToggle = document.getElementById('menu-toggle');
