@@ -138,138 +138,211 @@
             box-shadow: 0 4px 15px rgba(0, 119, 255, 0.3);
         }
 
-        /* Image Carousel Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(10px);
-            animation: fadeIn 0.3s ease;
-        }
+       /* Image Carousel Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    animation: fadeIn 0.3s ease;
+}
 
-        .modal-content {
-            position: relative;
-            margin: auto;
-            padding: 20px;
-            width: 95%;
-            height: 95vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+.modal-content {
+    position: relative;
+    margin: auto;
+    width: 95%;
+    height: 95vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
 
-        .carousel-slide {
-            display: none;
-            text-align: center;
-            animation: fadeIn 0.5s ease;
-        }
+.carousel-slide {
+    display: none;
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+    max-width: 90%;
+    max-height: 80vh;
+}
 
-        .carousel-slide.active {
-            display: block;
-        }
+.carousel-slide.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
-        .carousel-image {
-            max-width: 100%;
-            max-height: 80vh;
-            object-fit: contain;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
+.carousel-image {
+    max-width: 100%;
+    max-height: 70vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
 
-        .image-caption {
-            color: white;
-            margin-top: 20px;
-            font-size: 1.2rem;
-            text-align: center;
-            padding: 0 20px;
-        }
+.image-caption {
+    color: white;
+    margin-top: 20px;
+    font-size: 1.1rem;
+    text-align: center;
+    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 8px;
+    max-width: 80%;
+    line-height: 1.4;
+}
 
-        /* Carousel Controls */
-        .carousel-controls {
-            position: absolute;
-            width: 100%;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            justify-content: space-between;
-            padding: 0 20px;
-            pointer-events: none;
-        }
+/* Carousel Controls */
+.carousel-controls {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    pointer-events: none;
+}
 
-        .carousel-btn {
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: white;
-            font-size: 2rem;
-            padding: 15px 20px;
-            cursor: pointer;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-            pointer-events: all;
-            backdrop-filter: blur(10px);
-        }
+.carousel-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    padding: 12px 16px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    pointer-events: all;
+    backdrop-filter: blur(10px);
+    z-index: 1002;
+}
 
-        .carousel-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: scale(1.1);
-        }
+.carousel-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
 
-        .close-modal {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            color: white;
-            font-size: 3rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 1001;
-            background: rgba(0, 0, 0, 0.5);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            line-height: 1;
-        }
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 2.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1001;
+    background: rgba(0, 0, 0, 0.6);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
 
-        .close-modal:hover {
-            color: #ff6b6b;
-            transform: rotate(90deg);
-        }
+.close-modal:hover {
+    color: #ff6b6b;
+    background: rgba(0, 0, 0, 0.8);
+    transform: rotate(90deg);
+}
 
-        .carousel-indicators {
-            position: absolute;
-            bottom: 30px;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            padding: 15px;
-            flex-wrap: wrap;
-        }
+.carousel-indicators {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 15px;
+    flex-wrap: wrap;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+}
 
-        .indicator {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            flex-shrink: 0;
-        }
+.indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
 
-        .indicator.active {
-            background: #0077ff;
-            transform: scale(1.3);
-        }
+.indicator.active {
+    background: #0077ff;
+    transform: scale(1.3);
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 98%;
+        height: 90vh;
+        padding: 10px;
+    }
+    
+    .carousel-slide {
+        max-width: 95%;
+        max-height: 75vh;
+    }
+    
+    .carousel-image {
+        max-height: 60vh;
+    }
+    
+    .carousel-btn {
+        font-size: 1.5rem;
+        padding: 10px 14px;
+    }
+    
+    .close-modal {
+        font-size: 2rem;
+        top: 15px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .image-caption {
+        font-size: 1rem;
+        max-width: 90%;
+        padding: 8px 15px;
+    }
+    
+    .carousel-indicators {
+        bottom: 10px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-image {
+        max-height: 55vh;
+    }
+    
+    .image-caption {
+        font-size: 0.9rem;
+        margin-top: 15px;
+    }
+    
+    .carousel-btn {
+        padding: 8px 12px;
+    }
+}
 
         /* Project Content */
         .content-grid {
@@ -801,74 +874,74 @@
         </div>
     </main>
 
-    <!-- Image Carousel Modal -->
-    <div id="imageModal" class="modal">
-        <span class="close-modal" onclick="closeModal()">&times;</span>
-        <div class="modal-content">
-            <div class="carousel-controls">
-                <button class="carousel-btn prev" onclick="changeSlide(-1)">❮</button>
-                <button class="carousel-btn next" onclick="changeSlide(1)">❯</button>
-            </div>
-            
-            <!-- Carousel Slides -->
-            <div class="carousel-slide active">
-                <img src="../assets/images/project1/1.png" alt="App Dashboard" class="carousel-image">
-                <div class="image-caption">Dashboard - Overview of spending and consumption analytics</div>
-            </div>
-            <div class="carousel-slide">
-                <img src="../assets/images/project1/2.png" alt="Expense Tracking" class="carousel-image">
-                <div class="image-caption">Expense Tracking - Detailed spending analysis and categorization</div>
-            </div>
-            <div class="carousel-slide">
-                <img src="../assets/images/project1/3.png" alt="Analytics View" class="carousel-image">
-                <div class="image-caption">Analytics - Consumption patterns and spending insights</div>
-            </div>
-            <div class="carousel-slide">
-                <img src="../assets/images/project1/4.png" alt="Budget Setup" class="carousel-image">
-                <div class="image-caption">Budget Management - Set and track spending limits</div>
-            </div>
-            <div class="carousel-slide">
-                <img src="../assets/images/project1/5.png" alt="Spending Report" class="carousel-image">
-                <div class="image-caption">Spending Reports - Comprehensive financial overview</div>
-            </div>
-            <div class="carousel-slide">
-                <img src="../assets/images/project1/6.png" alt="Habit Tracking" class="carousel-image">
-                <div class="image-caption">Habit Tracking - Monitor consumption patterns over time</div>
-            </div>
-            <div class="carousel-slide">
-                <img src="../assets/images/project1/7.png" alt="Settings" class="carousel-image">
-                <div class="image-caption">Settings - Customize app preferences and notifications</div>
-            </div>
-            <div class="carousel-slide">
-                <img src="../assets/images/project1/8.png" alt="Profile" class="carousel-image">
-                <div class="image-caption">User Profile - Personal information and account settings</div>
-            </div>
-            <div class="carousel-slide">
-                <img src="../assets/images/project1/9.png" alt="Notifications" class="carousel-image">
-                <div class="image-caption">Notifications - Alerts and reminders for better tracking</div>
-            </div>
-            <div class="carousel-slide">
-                <img src="../assets/images/project1/10.png" alt="Statistics" class="carousel-image">
-                <div class="image-caption">Statistics - Detailed charts and data visualization</div>
-            </div>
-            <div class="carousel-slide">
-                <img src="../assets/images/project1/11.png" alt="Export Data" class="carousel-image">
-                <div class="image-caption">Data Export - Backup and share your tracking data</div>
-            </div>
-            <div class="carousel-slide">
-                <img src="../assets/images/project1/12.png" alt="Help & Support" class="carousel-image">
-                <div class="image-caption">Help & Support - User guidance and assistance</div>
-            </div>
-            <div class="carousel-slide">
-                <img src="../assets/images/project1/13.png" alt="About App" class="carousel-image">
-                <div class="image-caption">About - App information and version details</div>
-            </div>
+<!-- Image Carousel Modal -->
+<div id="imageModal" class="modal">
+    <span class="close-modal" onclick="closeModal()">&times;</span>
+    <div class="modal-content">
+        <div class="carousel-controls">
+            <button class="carousel-btn prev" onclick="changeSlide(-1)">❮</button>
+            <button class="carousel-btn next" onclick="changeSlide(1)">❯</button>
+        </div>
+        
+        <!-- Carousel Slides -->
+        <div class="carousel-slide active">
+            <img src="../assets/images/project1/1.png" alt="App Dashboard" class="carousel-image">
+            <div class="image-caption">Dashboard - Overview of spending and consumption analytics</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="../assets/images/project1/2.png" alt="Expense Tracking" class="carousel-image">
+            <div class="image-caption">Expense Tracking - Detailed spending analysis and categorization</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="../assets/images/project1/3.png" alt="Analytics View" class="carousel-image">
+            <div class="image-caption">Analytics - Consumption patterns and spending insights</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="../assets/images/project1/4.png" alt="Budget Setup" class="carousel-image">
+            <div class="image-caption">Budget Management - Set and track spending limits</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="../assets/images/project1/5.png" alt="Spending Report" class="carousel-image">
+            <div class="image-caption">Spending Reports - Comprehensive financial overview</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="../assets/images/project1/6.png" alt="Habit Tracking" class="carousel-image">
+            <div class="image-caption">Habit Tracking - Monitor consumption patterns over time</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="../assets/images/project1/7.png" alt="Settings" class="carousel-image">
+            <div class="image-caption">Settings - Customize app preferences and notifications</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="../assets/images/project1/8.png" alt="Profile" class="carousel-image">
+            <div class="image-caption">User Profile - Personal information and account settings</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="../assets/images/project1/9.png" alt="Notifications" class="carousel-image">
+            <div class="image-caption">Notifications - Alerts and reminders for better tracking</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="../assets/images/project1/10.png" alt="Statistics" class="carousel-image">
+            <div class="image-caption">Statistics - Detailed charts and data visualization</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="../assets/images/project1/11.png" alt="Export Data" class="carousel-image">
+            <div class="image-caption">Data Export - Backup and share your tracking data</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="../assets/images/project1/12.png" alt="Help & Support" class="carousel-image">
+            <div class="image-caption">Help & Support - User guidance and assistance</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="../assets/images/project1/13.png" alt="About App" class="carousel-image">
+            <div class="image-caption">About - App information and version details</div>
+        </div>
 
-            <div class="carousel-indicators">
-                <!-- Indicators will be generated by JavaScript -->
-            </div>
+        <div class="carousel-indicators">
+            <!-- Indicators will be generated by JavaScript -->
         </div>
     </div>
+</div>
 
     <footer>
         <p>&copy; 2025 Noah Yalla. Built with ❤️ and creativity.</p>
