@@ -1,48 +1,413 @@
-<!-- Use the template above but with this content in the main section -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Set project-specific content
-    document.getElementById('project-title').textContent = 'Buai Tracker';
-    document.getElementById('project-description').innerHTML = `
-        <p>Buai Tracker is an innovative Android application designed specifically for betelnut (buai) chewers in Papua New Guinea. 
-        The app helps users monitor their chewing habits, track spending on betelnut, and maintain awareness of their consumption patterns.</p>
-        
-        <p>As a culturally specific solution, Buai Tracker addresses the unique needs of PNG's betelnut consumers while promoting 
-        responsible consumption and financial awareness.</p>
-    `;
-    
-    document.getElementById('features-list').innerHTML = `
-        <li><strong>Expense Tracking:</strong> Monitor daily, weekly, and monthly spending on betelnut</li>
-        <li><strong>Consumption Analytics:</strong> Visualize chewing habits with detailed charts and insights</li>
-        <li><strong>Budget Management:</strong> Set monthly budgets and receive spending alerts</li>
-        <li><strong>Health Reminders:</strong> Gentle notifications about consumption patterns</li>
-        <li><strong>Offline Capability:</strong> Works without internet connection in remote areas</li>
-        <li><strong>Multi-language Support:</strong> Available in Tok Pisin and English</li>
-    `;
-    
-    document.getElementById('tech-tags').innerHTML = `
-        <span class="tech-tag">Flutter</span>
-        <span class="tech-tag">Dart</span>
-        <span class="tech-tag">Firebase</span>
-        <span class="tech-tag">SQLite</span>
-        <span class="tech-tag">REST API</span>
-    `;
-    
-    document.getElementById('future-list').innerHTML = `
-        <li><strong>Social Features:</strong> Community challenges and sharing capabilities</li>
-        <li><strong>Vendor Integration:</strong> Connect with local betelnut vendors</li>
-        <li><strong>Health Insights:</strong> Integration with health monitoring devices</li>
-        <li><strong>Web Dashboard:</strong> Companion web application for detailed analytics</li>
-        <li><strong>Gamification:</strong> Reward system for achieving consumption goals</li>
-    `;
-    
-    // Update project details
-    document.getElementById('project-category').textContent = 'Mobile Application';
-    document.getElementById('project-timeline').textContent = '4 months';
-    document.getElementById('project-role').textContent = 'Full-stack Mobile Developer';
-    
-    // Update links
-    document.getElementById('live-demo').href = '#';
-    document.getElementById('github-repo').href = 'https://github.com/noahyalla/buai-tracker';
-});
-</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Buai Tracker - Noah Yalla</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+        /* Project Detail Styles */
+        .project-detail {
+            padding: 120px 20px 80px;
+            min-height: 100vh;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            color: #0077ff;
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 40px;
+            transition: transform 0.3s;
+        }
+
+        .back-btn:hover {
+            transform: translateX(-5px);
+        }
+
+        .project-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .project-header h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #0077ff, #00c6ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .project-subtitle {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .project-meta {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .project-date, .project-status {
+            background: rgba(0, 119, 255, 0.1);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            color: #0077ff;
+        }
+
+        .project-gallery {
+            margin-bottom: 60px;
+        }
+
+        .gallery-main {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .gallery-main img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .project-section {
+            margin-bottom: 50px;
+        }
+
+        .project-section h2 {
+            color: #0077ff;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .features-list, .future-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .features-list li, .future-list li {
+            padding: 15px;
+            margin-bottom: 10px;
+            background: rgba(0, 119, 255, 0.05);
+            border-left: 4px solid #0077ff;
+            border-radius: 8px;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .tech-tag {
+            background: linear-gradient(135deg, #0077ff, #00c6ff);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .sidebar-card {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 100px;
+        }
+
+        .sidebar-card h3 {
+            color: #0077ff;
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+        }
+
+        .project-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .project-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 20px;
+            background: rgba(0, 119, 255, 0.1);
+            color: #0077ff;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .project-link:hover {
+            background: #0077ff;
+            color: white;
+        }
+
+        .project-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        /* Dark Mode */
+        body.dark-mode .project-subtitle {
+            color: #ccc;
+        }
+
+        body.dark-mode .sidebar-card {
+            background: rgba(40, 40, 40, 0.8);
+        }
+
+        body.dark-mode .features-list li,
+        body.dark-mode .future-list li {
+            background: rgba(0, 198, 255, 0.1);
+        }
+
+        body.dark-mode .project-link {
+            background: rgba(0, 198, 255, 0.1);
+            color: #00c6ff;
+        }
+
+        body.dark-mode .project-link:hover {
+            background: #00c6ff;
+            color: #111;
+        }
+
+        body.dark-mode .info-item {
+            border-bottom-color: #444;
+        }
+
+        @media (max-width: 1024px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .sidebar-card {
+                position: static;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .project-detail {
+                padding: 100px 20px 60px;
+            }
+            
+            .project-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .gallery-main img {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+          <div class="logo">
+            <a href="../index.html" style="text-decoration: none; color: inherit;">Gigs</a>
+          </div>
+          <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">☰</button>
+          <ul class="nav-links" id="nav-links">
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="../index.html#projects">Projects</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+            <li>
+              <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
+            </li>
+          </ul>
+        </nav>
+    </header>
+
+    <main class="project-detail">
+        <div class="container">
+            <!-- Back Button -->
+            <a href="../index.html#projects" class="back-btn">
+                ← Back to Projects
+            </a>
+
+            <!-- Project Header -->
+            <header class="project-header">
+                <h1>Buai Tracker</h1>
+                <p class="project-subtitle">Android app for tracking betelnut consumption and spending habits in PNG</p>
+                <div class="project-meta">
+                    <span class="project-date">2024</span>
+                    <span class="project-status">Completed</span>
+                </div>
+            </header>
+
+            <!-- Project Gallery -->
+            <section class="project-gallery">
+                <div class="gallery-main">
+                    <img src="../assets/images/project1.png" alt="Buai Tracker App Screenshots" />
+                </div>
+            </section>
+
+            <!-- Project Details -->
+            <section class="project-content">
+                <div class="content-grid">
+                    <!-- Main Content -->
+                    <div class="main-content">
+                        <section class="project-section">
+                            <h2>About the Project</h2>
+                            <p>
+                                Buai Tracker is an innovative Android application designed specifically for betelnut (buai) chewers in Papua New Guinea. 
+                                The app helps users monitor their chewing habits, track spending on betelnut, and maintain awareness of their consumption patterns.
+                            </p>
+                            <p>
+                                As a culturally specific solution, Buai Tracker addresses the unique needs of PNG's betelnut consumers while promoting 
+                                responsible consumption and financial awareness. The app provides valuable insights into spending patterns and helps 
+                                users make informed decisions about their betelnut consumption.
+                            </p>
+                        </section>
+
+                        <section class="project-section">
+                            <h2>Key Features</h2>
+                            <ul class="features-list">
+                                <li><strong>Expense Tracking:</strong> Monitor daily, weekly, and monthly spending on betelnut with detailed analytics</li>
+                                <li><strong>Consumption Analytics:</strong> Visualize chewing habits with interactive charts and consumption insights</li>
+                                <li><strong>Budget Management:</strong> Set monthly budgets and receive intelligent spending alerts</li>
+                                <li><strong>Health Reminders:</strong> Gentle notifications about consumption patterns and health considerations</li>
+                                <li><strong>Offline Capability:</strong> Full functionality without internet connection for remote areas</li>
+                                <li><strong>Multi-language Support:</strong> Available in Tok Pisin and English for wider accessibility</li>
+                                <li><strong>Data Export:</strong> Export consumption reports for personal record keeping</li>
+                            </ul>
+                        </section>
+
+                        <section class="project-section">
+                            <h2>Technical Implementation</h2>
+                            <div class="tech-stack">
+                                <h3>Technologies Used</h3>
+                                <div class="tech-tags">
+                                    <span class="tech-tag">Flutter</span>
+                                    <span class="tech-tag">Dart</span>
+                                    <span class="tech-tag">Firebase</span>
+                                    <span class="tech-tag">SQLite</span>
+                                    <span class="tech-tag">REST API</span>
+                                    <span class="tech-tag">Google Maps API</span>
+                                </div>
+                            </div>
+                            <p>
+                                The app was built using Flutter for cross-platform compatibility, with Firebase handling backend services 
+                                and user authentication. Local data storage using SQLite ensures offline functionality, while the clean 
+                                architecture pattern maintains code scalability and testability.
+                            </p>
+                        </section>
+
+                        <section class="project-section">
+                            <h2>Future Enhancements</h2>
+                            <ul class="future-list">
+                                <li><strong>Social Features:</strong> Community challenges and sharing capabilities among users</li>
+                                <li><strong>Vendor Integration:</strong> Connect with local betelnut vendors for direct purchasing</li>
+                                <li><strong>Health Insights:</strong> Integration with health monitoring devices and wellness tracking</li>
+                                <li><strong>Web Dashboard:</strong> Companion web application for detailed analytics and reporting</li>
+                                <li><strong>Gamification:</strong> Reward system for achieving responsible consumption goals</li>
+                                <li><strong>Marketplace:</strong> Built-in marketplace connecting buyers and sellers directly</li>
+                            </ul>
+                        </section>
+                    </div>
+
+                    <!-- Sidebar -->
+                    <aside class="project-sidebar">
+                        <div class="sidebar-card">
+                            <h3>Project Details</h3>
+                            <div class="project-links">
+                                <a href="#" class="project-link">
+                                    🌐 Live Demo
+                                </a>
+                                <a href="https://github.com/noahyalla/buai-tracker" class="project-link" target="_blank">
+                                    💻 GitHub Repository
+                                </a>
+                            </div>
+                            <div class="project-info">
+                                <div class="info-item">
+                                    <strong>Category:</strong>
+                                    <span>Mobile Application</span>
+                                </div>
+                                <div class="info-item">
+                                    <strong>Timeline:</strong>
+                                    <span>4 months</span>
+                                </div>
+                                <div class="info-item">
+                                    <strong>Role:</strong>
+                                    <span>Full-stack Mobile Developer</span>
+                                </div>
+                                <div class="info-item">
+                                    <strong>Platform:</strong>
+                                    <span>Android</span>
+                                </div>
+                                <div class="info-item">
+                                    <strong>Status:</strong>
+                                    <span>Version 1.0 Released</span>
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Noah Yalla. Built with ❤️ and creativity.</p>
+    </footer>
+
+    <script>
+        // Your existing theme and menu script
+        const menuToggle = document.getElementById('menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-mode');
+            themeToggle.textContent = '☀️';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const isDark = body.classList.contains('dark-mode');
+            themeToggle.textContent = isDark ? '☀️' : '🌙';
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+    </script>
+</body>
+</html>
